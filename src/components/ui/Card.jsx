@@ -1,7 +1,12 @@
-export default function Card({ children, className = "" }) {
-  return (
-    <div className={`bg-zinc-950 border border-zinc-900 rounded-xl p-6 shadow-sm overflow-hidden ${className}`}>
-      {children}
-    </div>
-  );
+import React from 'react';
+
+export default function Card({ children, className = '', ...props }) {
+    return (
+        <div 
+            className={`bg-white text-slate-900 border border-slate-100 rounded-3xl shadow-sm p-6 ${className}`} 
+            {...props}
+        >
+            {children}
+        </div>
+    );
 }

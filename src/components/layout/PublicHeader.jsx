@@ -1,22 +1,41 @@
-import Link from "next/link";
-import BrandMark from "../BrandMark";
+'use client';
+
+import Link from 'next/link';
+import BrandMark from '@/components/BrandMark';
 
 export default function PublicHeader() {
   return (
-    <header className="w-full bg-[#09090b]/80 backdrop-blur-md border-b border-zinc-900 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <BrandMark />
-        <nav className="flex items-center gap-6">
-          <Link href="/login" className="text-sm font-semibold text-zinc-300 hover:text-white transition-colors">
-            Iniciar Sesión
+    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-sm py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-8">
+        
+        {/* BRANDMARK IZQUIERDA */}
+        <Link href="/" className="transition-transform hover:opacity-95">
+          <BrandMark light={false} />
+        </Link>
+
+        {/* NAVEGACIÓN CENTRADA */}
+        <nav className="hidden md:flex items-center gap-10 text-base font-bold text-slate-500">
+          <Link href="#inicio" className="hover:text-slate-800 transition-colors">
+            Inicio
           </Link>
-          <Link
-            href="/login"
-            className="px-4 py-2 rounded-lg bg-sena-green hover:bg-[#2c8300] text-sm font-semibold text-white transition-colors"
-          >
-            Acceder al Sistema
+          <Link href="#caracteristicas" className="hover:text-slate-800 transition-colors">
+            Características
+          </Link>
+          <Link href="#impacto" className="hover:text-slate-800 transition-colors">
+            Impacto
           </Link>
         </nav>
+
+        {/* BOTÓN "ACCEDER" DERECHA */}
+        <div className="flex items-center">
+          <Link
+            href="/login"
+            className="inline-flex items-center justify-center rounded-full bg-sena-green px-8 py-3 text-base font-bold text-white shadow-md shadow-green-600/20 hover:bg-[#2e8800] transition-all cursor-pointer"
+          >
+            Acceder
+          </Link>
+        </div>
+
       </div>
     </header>
   );

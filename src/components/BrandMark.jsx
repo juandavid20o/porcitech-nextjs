@@ -1,21 +1,24 @@
-import Link from "next/link";
-import Image from "next/image";
+{/* Ejemplo de BrandMark.jsx con soporte para light */}
+import Image from 'next/image';
 
-export default function BrandMark({ className = "" }) {
+export default function BrandMark({ light = false }) {
   return (
-    <Link href="/" className={`flex items-center gap-3 ${className}`}>
-      <div className="relative w-8 h-8 rounded-lg overflow-hidden bg-sena-green/10 flex items-center justify-center border border-sena-green/20">
+    <div className="flex flex-col items-start gap-1">
+      <div className="relative h-12 w-12 shrink-0">
         <Image
           src="/assets/SENA.png"
-          alt="SENA Logo"
-          width={24}
-          height={24}
-          className="object-contain"
+          alt="Logo SENA"
+          width={48}
+          height={48}
+          className="h-full w-full object-contain"
+          priority
         />
       </div>
-      <span className="font-bold tracking-tight text-white text-base">
-        Sistema Integral <span className="text-sena-green">Porcino</span>
+
+      <span className="text-2xl font-black tracking-tight leading-none">
+        <span className={light ? 'text-white' : 'text-[#0f172a]'}>Porci</span>
+        <span className="text-sena-green">Tech</span>
       </span>
-    </Link>
+    </div>
   );
 }

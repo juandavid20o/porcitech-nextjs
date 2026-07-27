@@ -3,7 +3,7 @@ import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
 export default function ReproductionPage() {
   return (
-    <ProtectedRoute allowedRoles={["admin", "veterinario"]}>
+    <ProtectedRoute allowedRoles={["admin", "veterinario", "operario"]}>
       <ReproductionView />
     </ProtectedRoute>
   );

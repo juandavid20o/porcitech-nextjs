@@ -10,7 +10,7 @@ export default function DashboardLayout({ children }) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const menuItems = [
+const menuItems = [
     { name: 'Inicio', href: '/dashboard' },
     { name: 'Inventario', href: '/dashboard/inventory' },
     { name: 'Registro de animales', href: '/dashboard/animals' },
@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }) {
     { name: 'Reproduccion', href: '/dashboard/reproduction' },
     { name: 'Vacunacion', href: '/dashboard/health' },
     { name: 'Alertas y reportes', href: '/dashboard/reports' },
-    { name: 'Configuracion de usuarios', href: '/dashboard/settings' },
+    { name: 'Configuracion de usuarios', href: '/dashboard/settings' }
   ];
 
   const handleLogout = () => {

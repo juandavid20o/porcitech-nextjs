@@ -1,23 +1,33 @@
 'use client';
 
+import Link from 'next/link';
+import { PlusCircle, Package, Utensils, HeartPulse, Sparkles } from 'lucide-react';
+
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
       
-      {/* CABECERA PRINCIPAL CON LOTE DESTACADO */}
-      <div className="bg-white border border-slate-200/85 rounded-4xl p-6 sm:p-8 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] relative overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      {/* CABECERA PRINCIPAL CON ÉNFASIS EN EL LOTE DESTACADO */}
+      <div className="bg-white border border-slate-200/85 rounded-4xl p-6 sm:p-8 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] relative overflow-hidden flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-amber-400"></div>
         <div>
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
             Resumen de información clave
           </h1>
-          <p className="text-sm text-slate-500 font-medium">
+          <p className="text-sm text-slate-500 font-medium mt-1">
             Panel general de control operativo del plantel porcino.
           </p>
         </div>
-        <div className="bg-slate-900 text-white px-4 py-2.5 rounded-2xl flex items-center gap-2.5 text-xs font-bold self-start sm:self-auto shadow-md">
-          <span className="text-slate-400 font-medium">Lote destacado</span>
-          <span className="text-sena-green font-black">Lote #42</span>
+
+        {/* LOTE DESTACADO MEJORADO Y LLAMATIVO */}
+        <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-2.5 sm:px-5 sm:py-3.5 rounded-3xl flex items-center gap-4 shadow-lg shadow-slate-900/10 border border-slate-800 self-start sm:self-auto">
+          <div className="h-10 w-10 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center">
+            <Sparkles size={20} />
+          </div>
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Lote destacado</div>
+            <div className="text-base sm:text-lg font-black text-amber-400 tracking-wide">Lote #42</div>
+          </div>
         </div>
       </div>
 
@@ -69,10 +79,10 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* RENDIMIENTO CRECIMIENTO */}
+        {/* RENDIMIENTO DE CRECIMIENTO */}
         <div className="bg-white border border-slate-200/85 rounded-4xl p-5 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] relative transition-all hover:border-slate-300">
           <div className="flex justify-between items-start mb-3">
-            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Rendimiento Crec.</span>
+            <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Rendimiento de Crecimiento</span>
             <div className="h-8 w-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xs font-bold">⚡</div>
           </div>
           <div className="flex items-baseline justify-between mb-2.5">
@@ -101,30 +111,63 @@ export default function DashboardPage() {
 
       </div>
 
-      {/* ACCESOS RÁPIDOS */}
+      {/* ACCESOS RÁPIDOS CONFIGURADOS CON TUS RUTAS EXACTAS */}
       <div className="bg-white border border-slate-200/85 rounded-4xl p-6 sm:p-7 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)]">
-        <div className="flex items-center gap-2.5 mb-4">
+        <div className="flex items-center gap-2.5 mb-5">
           <span className="bg-emerald-50 text-sena-green text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider border border-emerald-100">Accesos Rápidos</span>
           <h2 className="text-base font-black text-slate-900">Acciones frecuentes</h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-          <button className="p-4 rounded-2xl bg-slate-50/50 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/20 transition-all text-sm font-bold text-slate-700 flex items-center justify-center cursor-pointer shadow-2xs">
-            Registrar nuevo cerdo
-          </button>
-          <button className="p-4 rounded-2xl bg-slate-50/50 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/20 transition-all text-sm font-bold text-slate-700 flex items-center justify-center cursor-pointer shadow-2xs">
-            Ver inventario
-          </button>
-          <button className="p-4 rounded-2xl bg-slate-50/50 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/20 transition-all text-sm font-bold text-slate-700 flex items-center justify-center cursor-pointer shadow-2xs">
-            Registrar alimentación
-          </button>
-          <button className="p-4 rounded-2xl bg-slate-50/50 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/20 transition-all text-sm font-bold text-slate-700 flex items-center justify-center cursor-pointer shadow-2xs">
-            Ver reportes de salud
-          </button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          {/* 1. Registrar nuevo cerdo -> /dashboard/animals */}
+          <Link 
+            href="/dashboard/animals" 
+            className="group p-4 rounded-2xl bg-slate-50/70 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/30 transition-all text-sm font-bold text-slate-700 flex items-center gap-3.5 shadow-2xs hover:shadow-md hover:-translate-y-0.5"
+          >
+            <div className="p-2.5 rounded-xl bg-white shadow-xs text-sena-green group-hover:bg-sena-green group-hover:text-white transition-colors">
+              <PlusCircle size={20} />
+            </div>
+            <span>Registrar nuevo cerdo</span>
+          </Link>
+
+          {/* 2. Ver inventario -> /dashboard/inventory */}
+          <Link 
+            href="/dashboard/inventory" 
+            className="group p-4 rounded-2xl bg-slate-50/70 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/30 transition-all text-sm font-bold text-slate-700 flex items-center gap-3.5 shadow-2xs hover:shadow-md hover:-translate-y-0.5"
+          >
+            <div className="p-2.5 rounded-xl bg-white shadow-xs text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+              <Package size={20} />
+            </div>
+            <span>Ver inventario</span>
+          </Link>
+
+          {/* 3. Registrar alimentación -> /dashboard/feeding */}
+          <Link 
+            href="/dashboard/feeding" 
+            className="group p-4 rounded-2xl bg-slate-50/70 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/30 transition-all text-sm font-bold text-slate-700 flex items-center gap-3.5 shadow-2xs hover:shadow-md hover:-translate-y-0.5"
+          >
+            <div className="p-2.5 rounded-xl bg-white shadow-xs text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+              <Utensils size={20} />
+            </div>
+            <span>Registrar alimentación</span>
+          </Link>
+
+          {/* 4. Ver reportes de salud -> /dashboard/health-reports */}
+          <Link 
+            href="/dashboard/health" 
+            className="group p-4 rounded-2xl bg-slate-50/70 border border-slate-200/70 hover:border-sena-green hover:bg-emerald-50/30 transition-all text-sm font-bold text-slate-700 flex items-center gap-3.5 shadow-2xs hover:shadow-md hover:-translate-y-0.5"
+          >
+            <div className="p-2.5 rounded-xl bg-white shadow-xs text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <HeartPulse size={20} />
+            </div>
+            <span>Ver reportes de salud</span>
+          </Link>
+
         </div>
       </div>
 
-      {/* SECCIÓN INFERIOR: ACTIVIDAD RECIENTE Y ALERTA DE RENDIMIENTO */}
+      {/* SECCIÓN INFERIOR */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* ACTIVIDAD RECIENTE */}
@@ -179,9 +222,12 @@ export default function DashboardPage() {
             </p>
           </div>
 
-          <button className="w-full py-3.5 bg-sena-green hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg shadow-emerald-900/40 transition-all text-sm cursor-pointer flex items-center justify-center">
+         <Link 
+            href="/dashboard/weight"
+            className="w-full py-3.5 bg-sena-green hover:bg-green-700 text-white font-bold rounded-2xl shadow-lg shadow-emerald-900/40 transition-all text-sm cursor-pointer flex items-center justify-center text-center"
+          >
             Ver Análisis
-          </button>
+          </Link>
         </div>
 
       </div>

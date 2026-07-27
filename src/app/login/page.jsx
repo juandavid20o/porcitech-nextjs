@@ -36,7 +36,7 @@ export default function LoginPage() {
           <div className="flex flex-col items-center gap-1.5 mb-2">
             <div className="relative w-12 h-8">
               <Image 
-                src="/assets/logo-sena.png" 
+                src="/assets/SENA.png" 
                 alt="Logo SENA" 
                 fill
                 sizes="48px"

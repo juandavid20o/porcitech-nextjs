@@ -27,7 +27,8 @@ export default function LandingView() {
           <nav className="hidden md:flex items-center gap-10 text-sm font-bold text-slate-500">
             <Link href="#inicio" className="hover:text-slate-900 transition-colors">Inicio</Link>
             <Link href="#caracteristicas" className="hover:text-slate-900 transition-colors">Características</Link>
-            <Link href="#impacto" className="hover:text-slate-900 transition-colors">Impacto</Link>
+            {/* ENLACE IMPACTO DIRIGIDO A TECNOLOGÍA ADAPTADA */}
+            <Link href="#tecnologia" className="hover:text-slate-900 transition-colors">Impacto</Link>
           </nav>
 
           <Link 
@@ -62,7 +63,7 @@ export default function LandingView() {
             
             <div className="pt-4">
               <Link 
-                href="/dashboard"
+                href="/login"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-sena-green text-white font-bold rounded-full hover:bg-green-700 transition-all shadow-[0_8px_30px_-5px_rgba(34,197,94,0.4)] cursor-pointer text-sm sm:text-base"
               >
                 Comenzar Ahora 
@@ -112,7 +113,7 @@ export default function LandingView() {
         </main>
 
         {/* SECCIÓN DE ESTADÍSTICAS DINÁMICAS */}
-        <section id="impacto" className="max-w-7xl mx-auto px-6 sm:px-10 py-16 border-t border-slate-100 mt-12">
+        <section className="max-w-7xl mx-auto px-6 sm:px-10 py-16 border-t border-slate-100 mt-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {landingStats.map((stat, index) => (
               <div key={index} className="bg-slate-50/60 border border-slate-100 rounded-3xl p-6 text-center">
@@ -123,23 +124,83 @@ export default function LandingView() {
           </div>
         </section>
 
-        {/* SECCIÓN DE CARACTERÍSTICAS DINÁMICAS */}
-        <section id="caracteristicas" className="max-w-7xl mx-auto px-6 sm:px-10 py-16 mb-8">
+        {/* SECCIÓN DE CARACTERÍSTICAS DINÁMICAS (SOLUCIONES PARA CADA ETAPA) */}
+        <section id="caracteristicas" className="max-w-7xl mx-auto px-6 sm:px-10 py-16 mb-8 scroll-mt-24">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-3">Características Principales</h2>
-            <p className="text-slate-500 text-sm font-medium">Tecnología diseñada específicamente para optimizar cada etapa del proceso porcícola.</p>
+            <span className="text-xs font-black tracking-widest text-sena-green uppercase mb-2 block">
+              Ecosistema Integral
+            </span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-3">Soluciones para cada etapa</h2>
+            <p className="text-slate-500 text-sm font-medium">Nuestra plataforma integra las mejores practicas zootecnicas con tecnologia de vanguardia.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {landingFeatures.map((feature, index) => (
               <div key={index} className="bg-white border border-slate-200/80 rounded-4xl p-8 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.03)] hover:border-sena-green/50 transition-all">
-                <div className="h-10 w-10 rounded-2xl bg-emerald-50 text-sena-green flex items-center justify-center font-black mb-6">
-                  0{index + 1}
+                
+                {/* ICONOS DINÁMICOS */}
+                <div className="h-12 w-12 rounded-2xl bg-emerald-50 text-sena-green flex items-center justify-center font-bold text-lg mb-6 shadow-xs">
+                  {index === 0 && '📈'}
+                  {index === 1 && '🛡️'}
+                  {index === 2 && '⚡'}
                 </div>
+
                 <h3 className="text-lg font-black text-slate-900 mb-2">{feature.title}</h3>
                 <p className="text-slate-500 text-sm font-medium leading-relaxed">{feature.body}</p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* SECCIÓN: TECNOLOGÍA ADAPTADA PARA LA PORCICULTURA COLOMBIANA (CON ID PARA EL ENLACE IMPACTO) */}
+        <section id="tecnologia" className="max-w-7xl mx-auto px-6 sm:px-10 py-16 scroll-mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Ilustración o Panel Dashboard Minimalista */}
+            <div className="relative bg-slate-100 rounded-4xl p-8 border border-slate-200 flex flex-col justify-center items-center">
+              <div className="absolute top-6 left-6 w-8 h-8 rounded-full bg-amber-400"></div>
+              <div className="w-full bg-white rounded-2xl shadow-lg p-6 border border-slate-200 mt-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-sena-green/10 flex items-center justify-center text-sena-green font-bold">📊</div>
+                  <div>
+                    <div className="h-4 w-32 bg-slate-200 rounded mb-2"></div>
+                    <div className="h-3 w-20 bg-slate-100 rounded"></div>
+                  </div>
+                </div>
+                <div className="flex items-end gap-2 h-24 pt-4 border-t border-slate-100 justify-around">
+                  <div className="w-8 h-10 bg-slate-200 rounded-t"></div>
+                  <div className="w-8 h-16 bg-sena-green rounded-t"></div>
+                  <div className="w-8 h-22 bg-[#030712] rounded-t"></div>
+                  <div className="w-8 h-12 bg-slate-200 rounded-t"></div>
+                  <div className="w-8 h-8 bg-slate-100 rounded-t"></div>
+                </div>
+              </div>
+              <div className="w-full h-4 bg-slate-800 rounded-b-xl mt-2"></div>
+            </div>
+
+            {/* Textos y Checks */}
+            <div className="space-y-6">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                Tecnología adaptada para la porcicultura colombiana
+              </h2>
+              <p className="text-slate-500 text-sm sm:text-base font-medium leading-relaxed">
+                Entendemos los retos del campo nacional. Nuestra plataforma esta diseñada para funcionar en zonas con conectividad variable y adaptarse a las necesidades especificas del pequeño y mediano productor.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center gap-3">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-sena-green flex items-center justify-center text-xs font-bold">✓</span>
+                  <span className="text-sm font-bold text-slate-700">Soporte tecnico especializado SENA</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-sena-green flex items-center justify-center text-xs font-bold">✓</span>
+                  <span className="text-sm font-bold text-slate-700">Integracion con programas de fomento agropecuario</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-sena-green flex items-center justify-center text-xs font-bold">✓</span>
+                  <span className="text-sm font-bold text-slate-700">Reportes automaticos</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -154,7 +215,7 @@ export default function LandingView() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Link 
-                href="/dashboard"
+                href="/login"
                 className="px-8 py-4 bg-[#0a192f] text-white font-bold rounded-full hover:bg-slate-900 transition-all shadow-lg text-sm"
               >
                 Registrar mi Granja

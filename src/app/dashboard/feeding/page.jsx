@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Utensils } from 'lucide-react';
 
 export default function FeedingPage() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -45,10 +46,11 @@ export default function FeedingPage() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
           <div className="flex items-center gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
+              <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 flex items-center gap-3">
+                <Utensils className="text-amber-500 w-8 h-8 shrink-0" strokeWidth={2.2} />
                 Control de Alimentación
               </h1>
-              <p className="text-sm text-slate-500 font-medium">
+              <p className="text-sm text-slate-500 font-medium ml-11 mt-0.5">
                 Gestión de inventario y consumo diario del plantel.
               </p>
             </div>

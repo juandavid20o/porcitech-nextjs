@@ -10,7 +10,7 @@ export default function DashboardLayout({ children }) {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-const menuItems = [
+  const menuItems = [
     { name: 'Inicio', href: '/dashboard' },
     { name: 'Inventario', href: '/dashboard/inventory' },
     { name: 'Registro de animales', href: '/dashboard/animals' },
@@ -23,7 +23,7 @@ const menuItems = [
   ];
 
   const handleLogout = () => {
-    router.push('/login');
+    router.push('/');
   };
 
   return (
@@ -90,9 +90,9 @@ const menuItems = [
         </div>
       </aside>
 
-      {/* CONTENIDO PRINCIPAL CON FONDO CLARO */}
-      <div className="flex-1 lg:pl-64 flex flex-col min-w-0 bg-slate-50">
-        <main className="flex-1 p-6 sm:p-8 max-w-7xl w-full mx-auto">
+      {/* CONTENIDO PRINCIPAL CON ESPACIO LATERAL SUTIL SUCESIVO */}
+      <div className="flex-1 lg:pl-64 flex flex-col min-w-0 bg-slate-100">
+        <main className="flex-1 w-full px-4 sm:px-6 py-6">
           {children}
         </main>
       </div>

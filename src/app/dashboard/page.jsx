@@ -20,7 +20,7 @@ export default function DashboardPage() {
         </div>
 
         {/* LOTE DESTACADO MEJORADO Y LLAMATIVO */}
-        <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-2.5 sm:px-5 sm:py-3.5 rounded-3xl flex items-center gap-4 shadow-lg shadow-slate-900/10 border border-slate-800 self-start sm:self-auto">
+        <div className="bg-linear-to-r from-slate-900 to-slate-800 text-white p-2.5 sm:px-5 sm:py-3.5 rounded-3xl flex items-center gap-4 shadow-lg shadow-slate-900/10 border border-slate-800 self-start sm:self-auto">
           <div className="h-10 w-10 rounded-2xl bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center">
             <Sparkles size={20} />
           </div>

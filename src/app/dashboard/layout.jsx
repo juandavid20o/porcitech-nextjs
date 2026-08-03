@@ -1,14 +1,23 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+import { getCurrentUser, logout } from '@/services/auth/authService';
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const user = getCurrentUser();
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
 
   const menuItems = [
     { name: 'Inicio', href: '/dashboard' },
@@ -23,8 +32,13 @@ export default function DashboardLayout({ children }) {
   ];
 
   const handleLogout = () => {
-    router.push('/');
+    logout();
+    router.push('/login');
   };
+
+  const userInitial = currentUser?.name ? currentUser.name.charAt(0).toUpperCase() : 'U';
+  const userName = currentUser?.name || 'Usuario';
+  const userRole = currentUser?.role || 'Invitado';
 
   return (
     <div className="min-h-screen flex bg-slate-100 text-slate-800 font-sans">
@@ -35,25 +49,27 @@ export default function DashboardLayout({ children }) {
         <div className="overflow-y-auto">
           {/* LOGO SENA */}
           <div className="p-6 flex flex-col items-center text-center border-b border-slate-800/80">
-            <Image 
-              src="/assets/SENA.png" 
-              alt="Logo SENA" 
-              width={45} 
-              height={45} 
-              className="object-contain mb-2"
-            />
+           <Image 
+  src="/assets/SENA.png" 
+  alt="Logo SENA" 
+  width={45} 
+  height={45} 
+  style={{ width: 'auto', height: 'auto' }}
+  className="object-contain mb-2"
+/>
             <span className="font-black text-xl tracking-tight text-white block">PorciTech</span>
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">SENA S.I.G.P.</span>
           </div>
 
-          {/* PERFIL ADMINISTRADOR */}
+          {/* PERFIL DINÁMICO DEL USUARIO */}
           <div className="px-4 py-4">
             <div className="bg-[#0b0f19] border border-slate-800/80 rounded-2xl p-3 flex items-center gap-3">
-              <div className="h-9 w-9 rounded-xl bg-slate-800 flex items-center justify-center text-white text-xs font-bold">
-                A
+              <div className="h-9 w-9 rounded-xl bg-sena-green/20 text-sena-green flex items-center justify-center text-xs font-bold">
+                {userInitial}
               </div>
-              <div>
-                <span className="block text-[10px] font-black tracking-widest text-indigo-400 uppercase">Administrador</span>
+              <div className="overflow-hidden">
+                <span className="block text-xs font-bold text-white truncate">{userName}</span>
+                <span className="block text-[10px] font-black tracking-widest text-indigo-400 uppercase truncate">{userRole}</span>
               </div>
             </div>
           </div>
@@ -79,7 +95,7 @@ export default function DashboardLayout({ children }) {
           </nav>
         </div>
 
-        {/* BOTÓN CERRAR SESIÓN */}
+        {/* BOTÓN SESIÓN */}
         <div className="p-4 border-t border-slate-800/80">
           <button
             onClick={handleLogout}
@@ -90,7 +106,7 @@ export default function DashboardLayout({ children }) {
         </div>
       </aside>
 
-      {/* CONTENIDO PRINCIPAL CON ESPACIO LATERAL SUTIL SUCESIVO */}
+      {/* CONTENIDO PRINCIPAL */}
       <div className="flex-1 lg:pl-64 flex flex-col min-w-0 bg-slate-100">
         <main className="flex-1 w-full px-4 sm:px-6 py-6">
           {children}
